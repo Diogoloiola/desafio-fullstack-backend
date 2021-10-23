@@ -1,3 +1,4 @@
+require "json"
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
 
@@ -5,7 +6,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     data = []
-
+   
     @users.each do |user|
 
       location = Location.find_by(user_id: user.id)
@@ -46,6 +47,12 @@ class UsersController < ApplicationController
           "data": user.registered_date,
           "age": user.age_registred
         },
+        "registered": {
+          "date": user.registered_date,
+          "age": user.age_registred
+        },
+        "phone": user.phone,
+        "cell": user.cell,      
         "picture": {
           "large": picture.large,
           "medium": picture.medium,
@@ -54,9 +61,19 @@ class UsersController < ApplicationController
         "nat": user.nationality       
       })
     end
+
+    final_data = {
+      "results": data,
+      "info": [{
+        "seed": "2f10116f1799d353",
+        "results": User.count,
+        "page": 1,
+        "version": "1.3"
+      }]
+    }
     
 
-    render json: data
+    render json: final_data
   end
 
   # GET /users/1
