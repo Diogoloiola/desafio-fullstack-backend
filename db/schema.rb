@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_23_145849) do
+ActiveRecord::Schema.define(version: 2021_10_23_152212) do
+
+  create_table "locations", force: :cascade do |t|
+    t.string "street"
+    t.string "city"
+    t.string "state"
+    t.string "postcode"
+    t.integer "latitude"
+    t.integer "longitude"
+    t.string "timezone_offset"
+    t.string "timezone_description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", id: false, force: :cascade do |t|
     t.string "id"
