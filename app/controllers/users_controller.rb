@@ -4,8 +4,59 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.all
+    data = []
 
-    render json: @users
+    @users.each do |user|
+
+      location = Location.find_by(user_id: user.id)
+      picture = Picture.find_by(user_id: user.id)
+
+      data.push({
+        "gender": user.gender,
+        "name": {
+          "title": user.title_name,
+          "first": user.first_name,
+          "last": user.last_name
+        },
+        "location": {
+          "street": location.street,
+          "city": location.city,
+          "state": location.state,
+          "postcode": location.postcode,
+          "coordinates": {
+            "latitude": location.latitude,
+            "longitude": location.longitude
+          },
+          "timezone": {
+            "offset": location.timezone_offset,
+            "description": location.timezone_description
+          }      
+        },
+        "email": user.email,
+        "login": {
+          "uuid": user.id,
+          "username": user.username,
+          "password": user.password,
+          "salt": user.salt,
+          "md5": user.md5,
+          "sha1": user.sha1,
+          "sha256": user.sha256
+        },
+        "dob": {
+          "data": user.registered_date,
+          "age": user.age_registred
+        },
+        "picture": {
+          "large": picture.large,
+          "medium": picture.medium,
+          "thumbnail": picture.thumbnail
+        },
+        "nat": user.nationality       
+      })
+    end
+    
+
+    render json: data
   end
 
   # GET /users/1
