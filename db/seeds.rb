@@ -1,4 +1,6 @@
 User.delete_all
+Picture.delete_all
+Location.delete_all
 
 full_path_json =  Dir.pwd + '/users.json'
 
@@ -29,7 +31,7 @@ records['results'].each do |record|
   )
 
   location = Location.new(
-    street: record['location']['street'],
+    street: "#{record['location']['street']['number']} #{record['location']['street']['name']}",
     city: record['location']['city'],
     state: record['location']['state'],
     postcode: record['location']['postcode'],
