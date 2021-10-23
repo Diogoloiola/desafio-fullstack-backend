@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2021_10_23_153036) do
     t.string "city"
     t.string "state"
     t.string "postcode"
-    t.integer "latitude"
-    t.integer "longitude"
+    t.decimal "latitude", precision: 15, scale: 10, default: "0.0"
+    t.decimal "longitude", precision: 15, scale: 10, default: "0.0"
     t.string "timezone_offset"
     t.string "timezone_description"
     t.datetime "created_at", precision: 6, null: false

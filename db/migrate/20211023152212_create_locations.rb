@@ -5,8 +5,8 @@ class CreateLocations < ActiveRecord::Migration[6.1]
       t.string :city
       t.string :state
       t.string :postcode
-      t.integer :latitude
-      t.integer :longitude
+      t.decimal :latitude, :precision => 15, :scale => 10, :default => 0.0
+      t.decimal :longitude, :precision => 15, :scale => 10, :default => 0.0
       t.string :timezone_offset
       t.string :timezone_description
       t.timestamps
