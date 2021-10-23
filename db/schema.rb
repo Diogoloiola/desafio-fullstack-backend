@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_23_152212) do
+ActiveRecord::Schema.define(version: 2021_10_23_153036) do
 
   create_table "locations", force: :cascade do |t|
     t.string "street"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2021_10_23_152212) do
     t.string "timezone_description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "user_id"
+    t.index ["user_id"], name: "index_locations_on_user_id"
   end
 
   create_table "users", id: false, force: :cascade do |t|
