@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.0
 info:
   version: "1.0"
   title: Desafio Full Stack Coodesh
@@ -18,6 +18,7 @@ tags:
 paths:
   /users:
     get:
+      summary: Endpoint que retorna todos os usuários cadastrados na base de dados
       parameters:
         - in: query
           name: offset
@@ -41,6 +42,7 @@ paths:
           $ref: "./responses/not_found_credentials.yaml"
   /users/{id}:
     get:
+      summary: Endpoint que retorna um usuário baseado no seu id
       parameters:
         - in: path
           name: id
@@ -56,3 +58,23 @@ paths:
                   - $ref: "./schemas/user.yaml"
         404:
          $ref: "./responses/user_not_found.yaml"
+
+  /users/{id }:
+    delete:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: "id do usuário que vai ser deletado"
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+          required: true
+          description: Autorização por meio do token de acesso
+          example: "e07fbaae3b8242d8986c486d01018ca47b83"
+      responses:
+        202:
+          $ref: "./responses/user_deleted.yaml"
+        404:
+          $ref: "./responses/user_not_found.yaml"
