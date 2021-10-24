@@ -97,8 +97,8 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
 
-    if @user.update(user_params_update)
-      render json: @user
+    if @user.update(user_params_update) && Location.find_by(user_id: params[:id]).update_attribute(:street, params[:street])
+      render json: {"message": "Dados atualizados com sucesso"}
     else
       render json: @user.errors, status: :unprocessable_entity
     end
