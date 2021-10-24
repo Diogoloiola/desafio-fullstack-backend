@@ -37,6 +37,8 @@ records['results'].each do |record|
     postcode: record['location']['postcode'],
     latitude: record['location']['coordinates']['latitude'],
     longitude: record['location']['coordinates']['longitude'],
+    timezone_offset: record['location']['timezone']['offset'],
+    timezone_description: record['location']['timezone']['description'],
     user_id: record['login']['uuid']
   )
 
