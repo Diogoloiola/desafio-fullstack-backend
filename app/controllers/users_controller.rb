@@ -1,5 +1,7 @@
 require "json"
 class UsersController < ApplicationController
+  include Authenticable
+  before_action :authenticate_with_token, except: %i[index show]
   before_action :set_user, only: [:show, :update, :destroy]
   # GET /users
   def index
