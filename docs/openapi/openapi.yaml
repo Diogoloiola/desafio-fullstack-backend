@@ -14,11 +14,13 @@ components:
       in: "header"
 tags:
   - name: User
-    description: Dados de todos usuário cadastrados na base de dados
+    description: Endpoint resposável por manipular as informações dos usuários
 paths:
   /users:
     get:
       summary: Endpoint que retorna todos os usuários cadastrados na base de dados
+      tags:
+        - User
       parameters:
         - in: query
           name: offset
@@ -43,6 +45,8 @@ paths:
   /users/{id}:
     get:
       summary: Endpoint que retorna um usuário baseado no seu id
+      tags:
+        - User
       parameters:
         - in: path
           name: id
@@ -61,6 +65,38 @@ paths:
 
   /users/{id }:
     delete:
+      summary: Endpoint que excluí um usuário da base de dados
+      tags:
+        - User
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: "id do usuário que vai ser deletado"
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+          required: true
+          description: Autorização por meio do token de acesso
+          example: "e07fbaae3b8242d8986c486d01018ca47b83"
+      responses:
+        202:
+          $ref: "./responses/user_deleted.yaml"
+        404:
+          $ref: "./responses/user_not_found.yaml"
+  /users/{ id }:
+    patch:
+      tags:
+        - User
+      summary: Endpoint que vai atualizar os dados do usuário
+      requestBody:
+        description: Dados que serão atualizados
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "./schemas/user_update.yaml"
       parameters:
         - in: path
           name: id

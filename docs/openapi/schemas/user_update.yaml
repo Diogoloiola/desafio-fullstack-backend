@@ -1,0 +1,26 @@
+type: object
+properties:
+  first_name:
+    type: string
+    example: "Test"
+  last_name:
+    type: string
+    example: "Test"
+  email:
+    type: string
+    example: "email@test.com"
+  birth_date:
+    type: string
+    example: "2019-05-21"
+  gender:
+    type: string
+    example: "Male"
+  phone:
+    type: string
+    example: "40028922"
+  nationality:
+    type: string
+    example: "Br"
+  street:
+    type: string
+    example: "test test"
