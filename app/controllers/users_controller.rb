@@ -1,10 +1,12 @@
 require "json"
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
-
   # GET /users
   def index
-    @users = User.all
+    @page = params[:page] ? params[:page].to_i : 0
+    @user_per_page = params[:per_page] ? params[:per_page].to_i : 50
+
+    @users = User.offset(@page *  @user_per_page ).limit(@user_per_page)
     data = []
    
     @users.each do |user|
@@ -66,8 +68,8 @@ class UsersController < ApplicationController
       "results": data,
       "info": [{
         "seed": "2f10116f1799d353",
-        "results": User.count,
-        "page": 1,
+        "results":  @users.count,
+        "page": @page,
         "version": "1.3"
       }]
     }
