@@ -1,0 +1,41 @@
+openapi: 3.0.1
+info:
+  version: "1.0"
+  title: Desafio Full Stack Coodesh
+  description: "REST API do desafio full stack"
+servers:
+  - url: "http://localhost:3000"
+components:
+  securitySchemes:
+    JWT:
+      description: ""
+      type: "apiKey"
+      name: "Authorization"
+      in: "header"
+tags:
+  - name: User
+    description: Dados de todos usuário cadastrados na base de dados
+paths:
+  /users:
+    get:
+      parameters:
+        - in: query
+          name: offset
+          schema:
+            type: integer
+          description: "Pagina que você quer acessar"
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: O número de itens a serem retornados
+      responses:
+        200:
+          description: Retorna todos os dados usuários
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "./schemas/users.yaml"
+        401:
+          $ref: "./responses/not_found_credentials.yaml"

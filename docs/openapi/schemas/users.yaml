@@ -1,0 +1,140 @@
+type: object
+properties:
+  results:
+    type: array
+    items:
+      type: object
+      properties:
+        gender:
+          type: string
+          example: "male"
+        name: 
+          type: object
+          properties:
+            title: 
+              type: string
+              example: "Mr"
+            first:
+              type: string
+              example: "John"
+            last:
+              type: string
+              example: "wick"
+        location:
+          type: object
+          properties:
+            street:
+              type: string
+              example: "Test test"
+            city:
+              type: string
+              example: "kilcoole"
+            state:
+              type: string
+              example: "waterford"
+            postcode:
+              type: string
+              example: "93027"
+            coordinates:
+              type: object
+              properties:
+                latitude:
+                  type: string
+                  example: "20.9267"
+                longitude:
+                  type: string
+                  example: "-7.931"
+            timezone:
+              type: object
+              properties:
+                offset:
+                  type: string
+                  example: "-3:30"
+                description:
+                  type: string
+                  example: "Newfoundland"
+            email:
+              type: string
+              example: "test@gmail.com"
+            login:
+              type: object
+              properties:
+                uuid: 
+                  type: string
+                  example: "155e77ee-ba6d-486f-95ce-0e0c0fb4b919"
+                username:
+                  type: string
+                  example: "silverswan131"
+                password: 
+                  type: string
+                  example: "firewall"
+                salt:
+                  type: string
+                  example: "TQA1Gz7x"
+                md5:
+                  type: string
+                  example: "dc523cb313b63dfe5be2140b0c05b3bc"
+                sha1:
+                  type: string
+                  example: "7a4aa07d1bedcc6bcf4b7f8856643492c191540d"
+                sha256:
+                  type: string
+                  example: "74364e96174afa7d17ee52dd2c9c7a4651fe1254f471a78bda0190135dcd3480"
+            dob:
+              type: object
+              properties:
+                date:
+                  type: string
+                  example: "2019-05-21"
+                age:
+                  type: integer
+                  example: 17
+            registered:
+              type: object
+              properties:
+                date:
+                  type: string
+                  example: "2002-05-21"
+                age:
+                  type: integer
+                  example: 17
+         
+            phone: 
+              type: string
+              example: "081-454-0666"
+            cell:
+                type: string
+                example: "081-454-0666"
+            picture:
+              type: object
+              properties:
+                large: 
+                  type: string
+                  example: "https://randomuser.me/api/portraits/men/75.jpg"
+                medium:
+                  type: string
+                  example: "https://randomuser.me/api/portraits/med/men/75.jpg"
+                thumbnail: 
+                  type: string
+                  example: "https://randomuser.me/api/portraits/thumb/men/75.jpg"
+            nat:
+              type: string
+              example: "Br"
+  info:
+    type: array
+    items:
+      type: object
+      properties:
+        seed:
+          type: string
+          example: "2f10116f1799d353"
+        results:
+          type: integer
+          example: 1
+        page:
+          type: integer
+          example: 0
+        version:
+          type: string
+          example: "1.3"
+
