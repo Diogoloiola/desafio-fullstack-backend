@@ -1,0 +1,17 @@
+description: Usuário não encontrado
+content:
+  application/json:
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+      error:
+        type: integer
+        format: int32
+      msg:
+        type: string
+    example: {
+      'status': 404,
+      'message': 'Usuário não encontrado.'
+    }

@@ -39,3 +39,20 @@ paths:
                   - $ref: "./schemas/users.yaml"
         401:
           $ref: "./responses/not_found_credentials.yaml"
+  /users/{id}:
+    get:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: "id do usuário que vai ser pesquisado"
+      responses:
+        200:
+          description: Retorna todos os dados usuários
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "./schemas/user.yaml"
+        404:
+         $ref: "./responses/user_not_found.yaml"
