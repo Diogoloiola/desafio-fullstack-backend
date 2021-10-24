@@ -46,7 +46,7 @@ class UsersController < ApplicationController
           "sha256": user.sha256
         },
         "dob": {
-          "data": user.registered_date,
+          "data": user.birth_date,
           "age": user.age_registred
         },
         "registered": {
@@ -96,7 +96,8 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
-    if @user.update(user_params)
+
+    if @user.update(user_params_update)
       render json: @user
     else
       render json: @user.errors, status: :unprocessable_entity
@@ -119,5 +120,11 @@ class UsersController < ApplicationController
       params.require(:user).permit(:id, :gender, :title_name, :first_name, :last_name, :email, :birth_date, :age, 
         :registered_date, :age_registred, :phone, :cell, :id_name, :id_value, :nationality, :username, :password, 
         :salt, :md5, :sha1, :sha256)
+    end
+
+    def user_params_update
+      params.require(:user).permit(:first_name,:last_name, :email, :birth_date, :gender, :phone,
+        :nationality
+      )
     end
 end
