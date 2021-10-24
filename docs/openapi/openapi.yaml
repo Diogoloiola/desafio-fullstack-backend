@@ -62,8 +62,6 @@ paths:
                   - $ref: "./schemas/user.yaml"
         404:
          $ref: "./responses/user_not_found.yaml"
-
-  /users/{id }:
     delete:
       summary: Endpoint que excluí um usuário da base de dados
       tags:
@@ -85,7 +83,6 @@ paths:
           $ref: "./responses/user_deleted.yaml"
         404:
           $ref: "./responses/user_not_found.yaml"
-  /users/{ id }:
     patch:
       tags:
         - User
