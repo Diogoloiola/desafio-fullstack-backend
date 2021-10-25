@@ -48,7 +48,7 @@ class UsersController < ApplicationController
           "sha256": user.sha256
         },
         "dob": {
-          "data": user.birth_date,
+          "date": user.birth_date,
           "age": user.age_registred
         },
         "registered": {
