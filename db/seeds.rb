@@ -4,6 +4,7 @@ Location.delete_all
 
 full_path_json =  Dir.pwd + '/users.json'
 
+puts "Importando dados"
 records = JSON.parse(File.read(full_path_json))
 records['results'].each do |record|
   user = User.new(
@@ -53,3 +54,5 @@ records['results'].each do |record|
   location.save
   picture.save
 end
+
+puts "Dados importados com sucesso"
