@@ -84,3 +84,6 @@ Com o objetivo de facilitar o entendimento da API, foi utilizado o swagger para 
     php -S localhost:8000
 
 <img src="images/docs.png">
+
+## Créditos
+Esse é um desafio da <a href="https://coodesh.com/">coodesh</a>, todos os direitos reservados a empresa.
